@@ -82,18 +82,6 @@
       50%       { box-shadow: 0 0 42px rgba(240,89,168,0.4),  0 0 0 1px rgba(240,89,168,0.3); }
     }
 
-    header h1 {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 800; font-size: 1.5rem;
-      letter-spacing: -0.04em;
-      background: var(--gradient-main);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    header p { font-size: 0.66rem; color: var(--muted); margin-top: 2px; }
-
     .status-pill {
       margin-left: auto;
       display: flex; align-items: center; gap: 7px;
@@ -211,30 +199,22 @@
       font-family: 'Bricolage Grotesque', sans-serif;
     }
 
-    /* Settings trigger button */
+    /* Settings icon button in header */
     .settings-btn {
-      display: flex; align-items: center; gap: 7px;
+      width: 36px; height: 36px;
       background: var(--faint); border: 1px solid var(--border);
-      border-radius: 10px; padding: 7px 13px;
-      color: var(--muted); cursor: pointer;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 0.65rem; font-weight: 600;
-      transition: all 0.2s; margin-bottom: 1rem;
+      border-radius: 10px; cursor: pointer; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.2s;
     }
 
     .settings-btn:hover {
-      border-color: var(--violet);
-      color: var(--text);
-      background: rgba(124,92,252,0.07);
+      border-color: var(--violet); color: var(--text);
+      background: rgba(124,92,252,0.08);
     }
 
-    .settings-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-    .settings-btn .arrow-icon {
-      margin-left: auto;
-      width: 14px; height: 14px;
-      transition: transform 0.2s;
-    }
+    .settings-btn svg { width: 15px; height: 15px; }
 
     /* STATS */
     .stats {
@@ -282,24 +262,6 @@
       background: linear-gradient(var(--violet), var(--pink));
       border-radius: 3px;
     }
-
-    .empty-state {
-      flex: 1; display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 1rem; text-align: center;
-    }
-
-    .empty-icon {
-      width: 62px; height: 62px;
-      background: var(--gradient-main); border-radius: 18px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.8rem;
-      box-shadow: 0 0 32px rgba(124,92,252,0.3);
-      animation: float 3.5s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
       50%       { transform: translateY(-7px); }
     }
 
@@ -311,24 +273,6 @@
     .empty-state p strong {
       color: var(--text); display: block;
       font-size: 0.95rem; margin-bottom: 2px;
-    }
-
-    .suggestions {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;
-      margin-top: 0.25rem;
-    }
-
-    .chip {
-      background: var(--faint); border: 1px solid var(--border);
-      color: var(--muted); font-size: 0.65rem; padding: 5px 12px;
-      border-radius: 99px; cursor: pointer;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      transition: all 0.2s;
-    }
-
-    .chip:hover {
-      border-color: var(--violet); color: var(--text);
-      background: rgba(124,92,252,0.08);
     }
 
     /* BUBBLES */
@@ -435,17 +379,6 @@
     .send-btn:disabled { opacity: 0.3; cursor: not-allowed; box-shadow: none; }
     .send-btn svg { width: 18px; height: 18px; }
 
-    /* FOOTER */
-    .footer {
-      margin-top: 1.25rem; text-align: center;
-      font-size: 0.6rem; color: var(--muted); opacity: 0.5;
-      font-family: 'Bricolage Grotesque', sans-serif;
-      display: flex; justify-content: center; gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-sep { color: var(--border); }
-
     /* ERROR */
     .error-bar {
       background: rgba(248,113,113,0.07);
@@ -461,26 +394,16 @@
 
   <header>
     <div class="logo">✦</div>
-    <div>
-      <h1>Mon Chatbot IA</h1>
-      <p>Propulsé par Groq · Llama 3.3 70B</p>
-    </div>
+    <button class="settings-btn" onclick="openDrawer()" title="Personnalité du bot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+    </button>
     <div class="status-pill">
       <span class="status-dot"></span>
       EN LIGNE
     </div>
   </header>
-
-  <!-- Settings trigger -->
-  <button class="settings-btn" onclick="openDrawer()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-    </svg>
-    Personnalité du bot
-    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="9 18 15 12 9 6"/>
-    </svg>
-  </button>
 
   <!-- Overlay -->
   <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
@@ -504,12 +427,6 @@
       <p class="drawer-hint">Ce texte définit le comportement et le ton du bot. Il est envoyé en arrière-plan à chaque message.</p>
     </div>
   </div>
-
-  <div class="stats">
-    <div class="stat-chip">
-      <span class="dot-v"></span>
-      Messages : <strong id="statMsgs">0</strong>
-    </div>
     <div class="stat-chip">
       <span class="dot-p"></span>
       <strong>llama-3.3-70b</strong>
@@ -518,19 +435,7 @@
   </div>
 
   <div class="messages" id="messages">
-    <div class="empty-state" id="emptyState">
-      <div class="empty-icon">✦</div>
-      <p>
-        <strong>Prêt à discuter !</strong>
-        Pose-moi n'importe quelle question.
-      </p>
-      <div class="suggestions">
-        <button class="chip" onclick="askSuggestion(this)">💡 Explique-moi quelque chose</button>
-        <button class="chip" onclick="askSuggestion(this)">✍️ Aide-moi à écrire</button>
-        <button class="chip" onclick="askSuggestion(this)">🔍 Cherchons ensemble</button>
-        <button class="chip" onclick="askSuggestion(this)">💬 Parlons !</button>
-      </div>
-    </div>
+    
   </div>
 
   <div class="error-bar" id="errorBar"></div>
@@ -552,14 +457,6 @@
       </svg>
     </button>
   </div>
-
-  <div class="footer">
-    <span>Backend : <strong>/api/chat</strong></span>
-    <span class="footer-sep">·</span>
-    <span>Vercel Functions</span>
-    <span class="footer-sep">·</span>
-    <span>Groq API gratuite</span>
-  </div>
 </div>
 
 <script>
@@ -572,15 +469,7 @@
 
   function handleKey(e) {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-  }
-
-  function askSuggestion(btn) {
-    const map = {
-      '💡 Explique-moi quelque chose': "Explique-moi comment fonctionne l'IA de façon simple.",
-      '✍️ Aide-moi à écrire': "Aide-moi à écrire une courte introduction pour un email professionnel.",
-      '🔍 Cherchons ensemble': "Quelles sont les dernières tendances en technologie ?",
-      '💬 Parlons !': "Bonjour ! Comment tu vas aujourd'hui ?"
-    };
+  };
     const input = document.getElementById('userInput');
     input.value = map[btn.textContent.trim()] || btn.textContent.trim();
     autoResize(input);
@@ -589,17 +478,7 @@
 
   function clearChat() {
     history.length = 0;
-    document.getElementById('messages').innerHTML = `
-      <div class="empty-state" id="emptyState">
-        <div class="empty-icon">✦</div>
-        <p><strong>Prêt à discuter !</strong>Pose-moi n'importe quelle question.</p>
-        <div class="suggestions">
-          <button class="chip" onclick="askSuggestion(this)">💡 Explique-moi quelque chose</button>
-          <button class="chip" onclick="askSuggestion(this)">✍️ Aide-moi à écrire</button>
-          <button class="chip" onclick="askSuggestion(this)">🔍 Cherchons ensemble</button>
-          <button class="chip" onclick="askSuggestion(this)">💬 Parlons !</button>
-        </div>
-      </div>`;
+    document.getElementById('messages').innerHTML = '';
     document.getElementById('statMsgs').textContent = '0';
   }
 
